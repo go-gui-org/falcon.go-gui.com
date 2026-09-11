@@ -94,8 +94,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .dl-note{margin-top:.8rem;font-size:.82rem;color:var(--text-muted)}
 .src-line{margin-top:1.2rem;background:var(--bg-code);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.85rem;overflow-x:auto;white-space:nowrap}
 .src-line .p{color:var(--green);user-select:none}
-/* ── Demo slot ── */
-.demo-slot{border:1px dashed var(--border);border-radius:var(--radius);padding:2.5rem 1.5rem;text-align:center;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:.85rem}
+/* ── Demo video ── */
+.term video{display:block;width:100%;height:auto;background:#000;aspect-ratio:16/10}
 /* ── Man page ── */
 .man h3{font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--text);margin:1.6rem 0 .5rem}
 .man h3:first-of-type{margin-top:0}
@@ -170,9 +170,12 @@ footer a{color:var(--text-secondary)}
 <section id="demo">
   <div class="container">
     <h2>demo</h2>
-    <div class="demo-slot">screen recording lands here — same chrome, &lt;video&gt; + poster</div>
-    <!-- demo video: drop falcon-demo.mp4 + poster into a <video controls poster>
-         inside .term chrome above; keep this slot until then -->
+    <div class="term">
+      <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">falcon — demo</span></div>
+      <video controls preload="metadata" playsinline>
+        <source src="falcon-demo.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </section>
 
@@ -188,14 +191,16 @@ footer a{color:var(--text-secondary)}
     <h3>DESCRIPTION</h3>
     <p>Falcon spawns a real shell over a PTY and renders through a GPU-accelerated draw canvas. It covers the protocol surface modern CLI tools expect: 24-bit Truecolor, Sixel and Kitty graphics, Kitty Keyboard Protocol, bracketed paste, scrollback with search and shell marks.</p>
     <p>Quitting saves the tab and pane layout; the next launch restores it. New tabs and splits inherit the focused pane's working directory.</p>
-    <h3>KEY BINDINGS</h3>
+    <h3>KEY BINDINGS (SAMPLING)</h3>
     <table>
       <tr><th>Cmd+D / Cmd+Shift+D</th><td>Split vertically / horizontally</td></tr>
       <tr><th>Cmd+T · Cmd+1…9</th><td>New tab · select tab</td></tr>
       <tr><th>Cmd+F</th><td>Find, with regex on Ctrl+R</td></tr>
       <tr><th>Cmd+Shift+Space</th><td>Copy mode — vim-keyed selection, output frozen</td></tr>
-      <tr><th>Cmd+↑ / ↓ · Cmd+Shift+E</th><td>Previous / next prompt · jump to last failure (needs OSC 133)</td></tr>
-      <tr><th>Cmd+Shift+T / R</th><td>Theme picker · toggle session recording</td></tr>
+      <tr><th>Cmd+↑ / ↓</th><td>Previous / next prompt (needs OSC 133)</td></tr>
+      <tr><th>Cmd+Shift+E</th><td>Jump to last failure (needs OSC 133)</td></tr>
+      <tr><th>Cmd+Shift+T</th><td>Theme picker</td></tr>
+      <tr><th>Cmd+Shift+R</th><td>Toggle session recording</td></tr>
       <tr><th>Cmd+/</th><td>Help overlay, generated from the live binding table</td></tr>
     </table>
     <h3>RECORDING</h3>
